@@ -108,7 +108,7 @@
         const paragrafi = document.querySelectorAll("div p")
         paragrafi.forEach(function(p){
           p.innerText= newText;
-        })   //è stato fatto da chatGPT
+        })   
       }
 
       changePcontent("ciaooooo questo testo è cambiato")
@@ -140,38 +140,84 @@
        Scrivi una funzione che aggiunga un paragrafo al primo div
     */
 
-      const addParagraph = function () {}
+      const addParagraph = function () {
+        const primoDiv = document.querySelector('div')
+        const newPar = document.createElement('p')
+        newPar.innerText="Questo è un nuovo paragrafo creato all'interno del primo div"
+        primoDiv.appendChild(newPar)
+      }
+
+      addParagraph()
 
       /* ESERCIZIO 7
        Scrivi una funzione che faccia scomparire la prima lista non ordinata
     */
 
-      const hideFirstUl = function () {}
+      const hideFirstUl = function () {
+        const selPl=document.querySelector('ul')
+        selPl.remove();
+      }
 
+      hideFirstUl();
       /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
+      const paintItGreen = function () {
+        const gList=document.querySelectorAll('ul')
+        for(let i=0;i<gList.length;i++){
+          gList[i].style.backgroundColor='green'
+        }
+      }
 
-      const paintItGreen = function () {}
+      paintItGreen();
 
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
+      const cliccaH1= document.querySelector('h1')
+      const makeItClickable = function () {
+        const testoAttuale= cliccaH1.textContent;
+        if(testoAttuale.length>0){
+          cliccaH1.textContent = testoAttuale.slice(0,-1);
+        }
+      }
 
-      const makeItClickable = function () {}
-
+      cliccaH1.addEventListener('click',makeItClickable);
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
+      const  footerSel= document.querySelector('footer')
+      const revealFooterLink = function () {
+      alert("Il link è: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents " )
+      }
 
-      const revealFooterLink = function () {}
+      footerSel.addEventListener('click',revealFooterLink)
 
       /* ESERCIZIO 11
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
 
-      const generateTable = function () {}
+      const generateTable = function () {
+        const creaTab = document.getElementById('tableArea')
+        const table= document.createElement('table')
+        table.border= "1";
+      
+          const creaTr= document.createElement('tr')
+          const creaTd= document.createElement('td')
+          creaTd.innerText="nome prodotto";
+          creaTd.innerText="ciaooo";
+          creaTr.appendChild(creaTd)
+          creaTab.appendChild(creaTr)
+        
+        
+        
+      
+      creaTab.appendChild(table) 
+      }
+
+
+      generateTable()
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
@@ -188,8 +234,25 @@
       /* EXTRA ESERCIZIO 15
       Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
     */
+    
+    function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+}
+    
+    
+    const cambiaCol = document.getElementById('changeMyColor')
 
-      const changeColorWithRandom = function () {}
+      const changeColorWithRandom = function () {
+        cambiaCol.forEach(h2 =>{
+          cambiaCol.style.color = getRandomColor();
+        });
+      };
+
+      cambiaCol.addEventListener('click',changeColorWithRandom)
     </script>
   </body>
 </html>
